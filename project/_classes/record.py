@@ -1,10 +1,12 @@
-from _classes.fields import Name, Phone, Birthday
+from _classes.fields import Name, Phone, Birthday, Email, Address
 
 
 class Record:
     def __init__(self, name):
         self.name = Name(name)
         self.phones = []
+        self.email = None
+        self.address = None
         self.birthday = None
 
     def add_phone(self, phone):
@@ -34,14 +36,30 @@ class Record:
         raise ValueError("Phone number not found.")
     
     def add_birth(self, birthday):
-        birthday_obj = Birthday(birthday)
-        self.birthday = birthday_obj
+        self.birthday = Birthday(birthday)
         return 
     
-    # def show_birth(self, birthday):
-    #     birthday_obj = Birthday(birthday)
-    #     # self.birthday = birthday_obj
-    #     return birthday_obj
+    def edit_birth(self, new_birthday):
+        self.birthday = new_birthday
+        return
+    
+    def add_mail(self, email):
+        self.email = Email(email)
+        return 
+    
+    def edit_mail(self, new_email):
+        self.email = new_email
+        return
+    
+    def add_address(self, address):
+        self.address = Address(address)
+        return 
+    
+    def edit_address(self, new_address):
+        self.address = new_address
+        return
+
+
     
 
     def __str__(self):
