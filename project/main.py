@@ -1,4 +1,3 @@
-from _classes.adress_book import AddressBook
 from _function.parse import parse_input
 from _function.add_contact import add_contact
 from _function.add_birthday import add_birthday
@@ -6,12 +5,15 @@ from _function.change_contact import change_contact
 from _function.delete_contact import delete_contact
 from _function.show import show_phone, show_all, show_birthday, birthdays
 from _function.save_load_data import save_data, load_data
+from _function.add_note import add_note
+from _function.list_notes import list_notes
+from _classes.notes import NoteBook
 
 
 
 def main():
     book = load_data()
-    # book = AddressBook()
+    notebook = NoteBook()
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ")
@@ -50,6 +52,12 @@ def main():
 
         elif command == "birthdays":
             birthdays(book)
+
+        elif command == "add-note":
+            add_note(args, notebook)
+
+        elif command == "list-notes":
+            list_notes(notebook)
 
         else:
             print("Invalid command.")
