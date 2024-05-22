@@ -14,15 +14,16 @@ from _classes.notes import NoteBook
 
 
 def main():
-    book = load_data()
-    notebook = NoteBook()
+    book = load_data(filename="project/_files/addressbook.pkl", class_name="AddressBook")
+    notebook = load_data(filename="project/_files/notebook.pkl", class_name="NoteBook")
     print("Welcome to the assistant bot!")
     while True:
         user_input = input("Enter a command: ")
         command, *args = parse_input(user_input)
 
         if command in ["close", "exit"]:
-            save_data(book)
+            save_data(book, filename="project/_files/addressbook.pkl")
+            save_data(notebook, filename="project/_files/notebook.pkl")
             print("Good bye!")
             break
         elif command == "hello":
