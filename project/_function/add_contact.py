@@ -14,7 +14,7 @@ def add_contact(args, book: AddressBook):
         message = "Contact added."
     if phone:
         record.add_phone(phone)
-    return print(message)
+    return message
 
 @input_error_birthday
 def add_birthday(args, book: AddressBook):
