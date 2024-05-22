@@ -32,10 +32,6 @@ class NoteBook(UserDict):
         if note_id in self.data:
             del self.data[note_id]
     
-    # def display_notes(self):
-    #     for note_id, note in self.data.items():
-    #         print(f"Header: {note.header}, ID: {note.id}, Creation Date: {note.creation_date}")
-
     def display_notes(self):
         headers = ["Header", "ID", "Creation Date"]
         rows = [[note.header, note.id, note.creation_date.strftime("%Y-%m-%d %H:%M")] for note in self.data.values()]
@@ -53,10 +49,3 @@ class NoteBook(UserDict):
         # Print each data row
         for row in rows:
             print(row_format.format(*row))
-
-# Загорнути в функції і підключити до команд боту
-
-#     # Отримання нотатки за id
-#     note_id = note1.id
-#     print(f"Note with ID '{note_id}':")
-#     print(notebook.get_note_by_id(note_id))
