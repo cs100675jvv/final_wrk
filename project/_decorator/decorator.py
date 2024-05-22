@@ -186,3 +186,18 @@ def input_error_emailes(func):
 
     return inner
 
+def input_error_note(func):
+    def inner(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        
+        except KeyError:
+            print ("KeyError")
+        except ValueError:
+            print ("Please specify note_id")
+        except IndexError:
+            print ("Missing arguments")
+        except Exception as e:
+            print(f"Error in {func.__name__}: {e}")
+
+    return inner

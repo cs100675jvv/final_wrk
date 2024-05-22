@@ -6,6 +6,7 @@ from _function.delete_contact import delete_contact
 from _function.show import show_phone, show_all, show_birthday, birthdays
 from _function.save_load_data import save_data, load_data
 from _function.add_note import add_note
+from _function.delete_note import delete_note
 from _function.list_notes import list_notes
 from _classes.notes import NoteBook
 
@@ -56,9 +57,11 @@ def main():
         elif command == "birthdays":
             birthdays(book)
 
-
         elif command == "add-note":
             add_note(args, notebook)
+
+        elif command == "delete-note":
+            delete_note(args, notebook)
 
         elif command == "list-notes":
             list_notes(notebook)
