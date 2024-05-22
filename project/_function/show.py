@@ -16,8 +16,8 @@ def show_phone (args, book: 'AddressBook'):
 
 
 def show_all (book: 'AddressBook'):
-    for name, phone in book.items():
-        print(f"{name}: {phone}")
+    for name, phone, email, address in book.items():
+        print(f"{name}: {phone}: {email}: {address}")
 
 @input_error_name
 def show_birthday(args, book: 'AddressBook'):
