@@ -18,8 +18,8 @@ The bot support the following commands:
 8. `hello`: Send a greeting from the bot.
 9. `add-note [name]`: Open an editor for note's text. Type `:end` to finish editing. After this the note added.
 10. `list-notes`: Show the list of all notes.
-11. `show-note` [note_id]: Show all info about the Note iwth note_id
-12. `delete-note` [note_id]: Delete selected Note.
+11. `show-note [note_id]`: Show all info about the Note with note_id
+12. `delete-note [note_id]`: Delete selected Note.
 13. `close` or `exit`: Close the program.
 
 ## Example Usage
