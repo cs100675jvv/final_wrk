@@ -1,11 +1,12 @@
-from _decorator.decorator import input_error_note
 from _classes.notes import NoteBook
+from _decorator.decorator import input_error_note
 
 @input_error_note
-def delete_note(args, notebook: NoteBook):
+def show_note(args, notebook: NoteBook):
     note_id, *_ = args
     if note_id in notebook:
-        notebook.remove_note_by_id(note_id)
-        return print(f"Note {note_id} deleted.")
+        note = notebook.get_note_by_id(note_id)
+        return print(note)
     else:
         return print(f"Note with ID {note_id} does not exist. Use list-notes to get all Note's ID")
+
