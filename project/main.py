@@ -8,8 +8,7 @@ from _function.add_note import add_note
 from _function.list_notes import list_notes
 from _function.help import print_help
 from _classes.notes import NoteBook
-
-
+from _function.search import search_all
 
 def main():
     book = load_data()
@@ -56,7 +55,6 @@ def main():
         elif command == "birthdays":
             birthdays(book)
 
-
         elif command == "add-note":
             add_note(args, notebook)
 
@@ -78,10 +76,9 @@ def main():
         elif command == "help":
             print_help() 
 
-        else:
-            print("Invalid command.")
-
-
-
+        elif command == "search":
+            search_all(args, book)
+#            results = search_all(args, book)
+                
 if __name__ == "__main__":
     main()
