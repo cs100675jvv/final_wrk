@@ -23,4 +23,9 @@ The bot support the following commands:
 10. `list-notes`: Show the list of all notes.
 11. `close` or `exit`: Close the program.
 
+## Installation as package
+Use the command `pip install -e .` from the root directory to install this app a package.
+
+Then use `assistantbot` command to run the bot.
+
 ## Example Usage
