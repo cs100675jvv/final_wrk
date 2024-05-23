@@ -3,6 +3,7 @@ from _classes.notes import Note
 
 def add_note(args, notebook="notebook"):
     """Function to add a new note"""
+
     if not args:
         print("Note header cannot be empty. Please enter Note Header")
         return
