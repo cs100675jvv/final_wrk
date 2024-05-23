@@ -1,63 +1,23 @@
 import re
 import tkinter as tk
-from tkinter import font as tkfont
 from _classes.notes import NoteBook
+from _function.find_note import find_note
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
 from _function.add_note import add_note
 from _function.change_contact import change_contact, change_birthday, change_email, change_address
 from _function.delete_contact import delete_contact
-from _function.display_help import display_help
+from _function.help import print_help
 from _function.list_notes import list_notes
 from _function.parse import parse_input
 from _function.save_load_data import save_data, load_data
 from _function.show import show_phone, show_all, show_birthday, birthdays
+from gui import init_gui
 
+data_path = "./_files"
 
-# TODO: move to separate file?
-def init_gui():
-    window = tk.Tk()
-    window.title("Assistant Bot by КотоПес team")
-
-    # window size
-    window_width = 600
-    window_height = 600
-    screen_width = window.winfo_screenwidth()
-    screen_height = window.winfo_screenheight()
-
-    # сenter of screen
-    position_top = int(screen_height / 2 - window_height / 2)
-    position_right = int(screen_width / 2 - window_width / 2)
-
-    window.geometry(f"{window_width}x{window_height}+{position_right}+{position_top}")
-
-    # dark mode
-    window.configure(bg='#212121')
-
-    # Define the font
-    custom_font = tkfont.Font(family="ui-sans-serif", size=12)
-
-    # Canvas for the rounded rectangle
-    canvas = tk.Canvas(window, bg='#212121', bd=0, highlightthickness=0)
-    canvas.place(relx=0.15, rely=0.9, relwidth=0.7, relheight=0.08)
-
-    # Entry for user input
-    user_input = tk.Entry(canvas, bg='#2f2f2f', fg='white', font=custom_font, insertbackground='white')
-    user_input.place(relx=0.02, rely=0.2, relwidth=0.96, relheight=0.6)
-
-    # Set focus on user_input
-    user_input.focus_set()
-
-    # Listbox for displaying messages
-    messages = tk.Text(window, bg='#212121', fg='white', font=custom_font, wrap=tk.WORD, borderwidth=0)
-    messages.place(relx=0.15, rely=0.1, relwidth=0.7, relheight=0.7)
-
-    return window, canvas, user_input, messages
-
-
-# TODO: reactor commands to return string instead of calling print function inside or pass insert_message function to command if some loop inside etc.
 def main():
-    book = load_data()
-    notebook = NoteBook()
+    book = load_data(filename=f"{data_path}/addressbook.pkl", class_name="AddressBook")
+    notebook = load_data(filename=f"{data_path}/notebook.pkl", class_name="NoteBook")
 
     window, canvas, user_input, messages = init_gui()
 
@@ -65,12 +25,13 @@ def main():
         messages.insert(tk.END, text)
         messages.see(tk.END)  # Scroll text to bottom
 
+    def clear_messages():
+        messages.delete('1.0', tk.END)
+
     insert_message("Hello. How can I help you today?\n")
 
     def handle_input(event):
-        # Get the user input and clear the input field
-        # Parsing with cleanup of non-alphanumeric characters, whitespaces and converting command to lowercase
-        input_data = re.sub(r'\W+', ' ', user_input.get().strip())
+        input_data = re.sub(r'[^\w-]+', ' ', user_input.get().strip())
         command, *args = parse_input(input_data)
         command = command.lower()
         user_input.delete(0, tk.END)
@@ -80,7 +41,8 @@ def main():
         messages.tag_add("right", "end-2l", "end-1l")
 
         if command in ["close", "exit"]:
-            save_data(book)
+            save_data(book, filename=f"{data_path}/addressbook.pkl")
+            save_data(notebook, filename=f"{data_path}/notebook.pkl")
             insert_message("Good bye!\n")
             window.quit()
         elif command == "hello":
@@ -116,11 +78,14 @@ def main():
             result = birthdays(book)
             insert_message(f"Upcoming birthdays: {result}\n")
         elif command == "add-note":
-            add_note(notebook, *args)
-            insert_message("Note added.\n")
+            result = add_note(notebook)
+            insert_message(f"{result}\n")
+        elif command == "find-note":
+            result = find_note(args, notebook)
+            insert_message(f"Search results:\n {result}\n")
         elif command == "list-notes":
             result = list_notes(notebook)
-            insert_message(f"Notes: {result}\n")
+            insert_message(f"Notes:\n{result}\n")
         elif command == "add-email":
             add_email(book, *args)
             insert_message("Email added.\n")
@@ -134,7 +99,10 @@ def main():
             change_address(args, book)
             insert_message("Address changed.\n")
         elif command == "help":
-            insert_message(display_help())
+            insert_message(print_help() + "\n")
+        elif command == 'clear':
+            clear_messages()
+            return
         else:
             insert_message("Invalid command.\n")
 
