@@ -1,7 +1,8 @@
 import re
 import tkinter as tk
-from tkinter import scrolledtext
 from tkinter import font as tkfont
+
+from _function.display_help import display_help
 from _function.parse import parse_input
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
 from _function.change_contact import change_contact, change_birthday, change_email, change_address
@@ -10,7 +11,6 @@ from _function.show import show_phone, show_all, show_birthday, birthdays
 from _function.save_load_data import save_data, load_data
 from _function.add_note import add_note
 from _function.list_notes import list_notes
-from _function.help import print_help
 from _classes.notes import NoteBook
 
 # TODO: move to separate file?
@@ -52,30 +52,6 @@ def init_gui():
     messages.place(relx=0.15, rely=0.1, relwidth=0.7, relheight=0.7)
 
     return window, canvas, user_input, messages
-
-# TODO: move to separate file, review
-def display_help():
-    help_message = """
-    Available commands:
-    - hello: Greet the bot
-    - add: Add a new contact. Args: name, phone
-    - change: Change a contact. Args: name, new_phone
-    - delete: Delete a contact. Args: name
-    - show: Show a contact's phone. Args: name
-    - add_birthday: Add a contact's birthday. Args: name, birthday
-    - change_birthday: Change a contact's birthday. Args: name, new_birthday
-    - show_birthday: Show a contact's birthday. Args: name
-    - birthdays: Show upcoming birthdays
-    - add-note: Add a note. Args: note_content
-    - list-notes: List all notes
-    - add-email: Add a contact's email. Args: name, email
-    - change-email: Change a contact's email. Args: name, new_email
-    - add-address: Add a contact's address. Args: name, address
-    - change-address: Change a contact's address. Args: name, new_address
-    - close/exit: Save data and exit
-    """
-    return help_message
-
 
 #TODO: reactor commands to return string instead of calling print function inside or pass insert_message function to command if some loop inside etc.
 def main():
