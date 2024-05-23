@@ -122,7 +122,10 @@ def main():
             insert_message(f"{result}\n")
         elif command == "all":
             result = show_all(book)
-            insert_message(f"{result}\n")
+            if result:
+                insert_message(f"{result}\n")
+            else:
+                insert_message("No contacts found.\n")
         elif command == "add_birthday":
             add_birthday(args, book)
             insert_message("Birthday added.\n")
