@@ -12,6 +12,7 @@ from _function.change_contact import change_contact, change_birthday, change_ema
 from _function.delete_contact import delete_contact
 from _function.display_help import display_help
 from _function.list_notes import list_notes
+from _function.find_note import find_note
 from _function.parse import parse_input
 from _function.save_load_data import save_data, load_data
 from _function.show import show_phone, show_all, show_birthday, birthdays
@@ -40,7 +41,8 @@ commands = [
     'list-notes',
     'show-note',
     'edit-note',
-    'delete-note'
+    'delete-note',
+    'find-note'
 ]
 
 completer = WordCompleter(commands, ignore_case=True)
@@ -119,6 +121,8 @@ def main():
             show_note(args, notebook)
         elif command == "edit-note":
             edit_note(args, notebook)
+        elif command == "find-note":
+            find_note(args, notebook)
         
         elif command == "add-email":
             add_email(book, *args)
