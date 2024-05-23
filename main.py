@@ -51,8 +51,6 @@ class FirstWordCompleter(Completer):
         self.completer = completer
 
     def get_completions(self, document, complete_event):
-        # Якщо курсор знаходиться на першому слові, використовувати completer
-        # if document.cursor_position_row == 0 and len(document.text_before_cursor.split()) <= 1:
         text_before_cursor = document.text_before_cursor
         if ' ' in text_before_cursor:
             return
@@ -66,76 +64,74 @@ def main():
     print("Hello. How can I help you today?\n")
 
     while True:
-        # user_input = input("Enter a command: ")
         user_input = prompt('>>> ', completer=FirstWordCompleter(completer))
-        # command, *args = parse_input(user_input)
-        command = user_input.split()
+        command, *args = parse_input(user_input)
         
         if not command:
                 continue
         
-        if command[0] in ["close", "exit"]:
+        if command in ["close", "exit"]:
             save_data(book, filename=f"{data_path}/addressbook.pkl")
             save_data(notebook, filename=f"{data_path}/notebook.pkl")
             console.print("[red]Good bye![/red]")
             break
-        elif command[0] == "hello":
+        elif command == "hello":
             console.print("How can I help you?\n")
-        elif command[0] == "add":
+        elif command == "add":
             result = add_contact(args, book)
             console.print(f"{result}\n")
-        elif command[0] == "change":
+        elif command == "change":
             change_contact(args, book)
             console.print("Contact changed.\n")
-        elif command[0] == "delete":
+        elif command == "delete":
             delete_contact(args, book)
             console.print("Contact deleted.\n")
-        elif command[0] == "show":
+        elif command == "show":
             result = show_phone(book, *args)
             console.print(f"{result}\n")
-        elif command[0] == "all":
+        elif command == "all":
             result = show_all(book)
             if result:
                 console.print(f"{result}\n")
             else:
                 console.print("No contacts found.\n")
-        elif command[0] == "add_birthday":
+        elif command == "add_birthday":
             add_birthday(args, book)
             console.print("Birthday added.\n")
-        elif command[0] == "change_birthday":
+        elif command == "change_birthday":
             change_birthday(args, book)
             console.print("Birthday changed.\n")
-        elif command[0] == "show_birthday":
+        elif command == "show_birthday":
             result = show_birthday(args, book)
             console.print(f"Birthday: {result}\n")
-        elif command[0] == "birthdays":
+        elif command == "birthdays":
             result = birthdays(book)
             console.print(f"Upcoming birthdays: {result}\n")
         
-        elif command[0] == "add-note":
+        elif command == "add-note":
             add_note(args, notebook)
-        elif command[0] == "delete-note":
+        elif command == "delete-note":
             delete_note(args, notebook)
-        elif command[0] == "list-notes":
+        elif command == "list-notes":
             list_notes(notebook)
-        elif command[0] == "show-note":
+        elif command == "show-note":
             show_note(args, notebook)
-        elif command[0] == "edit-note":
+        elif command == "edit-note":
             edit_note(args, notebook)
         
-        elif command[0] == "add-email":
+        elif command == "add-email":
             add_email(book, *args)
             console.print("Email added.\n")
-        elif command[0] == "change-email":
+        elif command == "change-email":
             change_email(args, book)
             console.print("Email changed.\n")
-        elif command[0] == "add-address":
+        elif command == "add-address":
             add_address(args, book)
             console.print("Address added.\n")
-        elif command[0] == "change-address":
+        elif command == "change-address":
             change_address(args, book)
             console.print("Address changed.\n")
-        elif command[0] == "help":
+        elif command == "help":
             console.print(display_help())
         else:
             console.print("[red]Invalid command[/red].\n")
