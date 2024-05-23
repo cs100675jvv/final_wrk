@@ -1,7 +1,8 @@
 from _classes.notes import Note
 
+
 def add_note(args, notebook="notebook"):
-    '''Function to add a new note'''
+    """Function to add a new note"""
     if not args:
         print("Error: Note header cannot be empty.")
         return
@@ -9,7 +10,7 @@ def add_note(args, notebook="notebook"):
     header = " ".join(args)
     note = Note(header)
     print(f"Adding note with header '{header}'. Enter the Note text (Type ':end' to finish text editing):")
-    
+
     body_lines = []
     while True:
         line = input()

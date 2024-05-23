@@ -1,7 +1,8 @@
 from datetime import datetime
+
+from _classes.adress_book import AddressBook
 from _decorator.decorator import input_error_name
 from _function.upcoming_birthdays import get_upcoming_birthdays
-from _classes.adress_book import AddressBook
 
 
 @input_error_name
@@ -18,8 +19,10 @@ def show_all(book: 'AddressBook'):
     result = []
     for name, record in book.items():
         phones = [phone.value for phone in record.phones]
-        result.append(f"Name: {record.name}; Phones: {', '.join(phones)}; Email: {record.email}; Address: {record.address}")
+        result.append(
+            f"Name: {record.name}; Phones: {', '.join(phones)}; Email: {record.email}; Address: {record.address}")
     return '\n'.join(result)
+
 
 @input_error_name
 def show_birthday(args, book: 'AddressBook'):

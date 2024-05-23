@@ -1,17 +1,18 @@
 import re
 import tkinter as tk
-from tkinter import font as tkfont
+import tkinter
 
-from _function.display_help import display_help
-from _function.parse import parse_input
+from _classes.notes import NoteBook
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
+from _function.add_note import add_note
 from _function.change_contact import change_contact, change_birthday, change_email, change_address
 from _function.delete_contact import delete_contact
-from _function.show import show_phone, show_all, show_birthday, birthdays
-from _function.save_load_data import save_data, load_data
-from _function.add_note import add_note
+from _function.display_help import display_help
 from _function.list_notes import list_notes
-from _classes.notes import NoteBook
+from _function.parse import parse_input
+from _function.save_load_data import save_data, load_data
+from _function.show import show_phone, show_all, show_birthday, birthdays
+
 
 # TODO: move to separate file?
 def init_gui():
@@ -34,7 +35,7 @@ def init_gui():
     window.configure(bg='#212121')
 
     # Define the font
-    custom_font = tkfont.Font(family="ui-sans-serif", size=12)
+    custom_font = tkinter.font.Font(family="ui-sans-serif", size=12)
 
     # Canvas for the rounded rectangle
     canvas = tk.Canvas(window, bg='#212121', bd=0, highlightthickness=0)
@@ -53,7 +54,9 @@ def init_gui():
 
     return window, canvas, user_input, messages
 
-#TODO: reactor commands to return string instead of calling print function inside or pass insert_message function to command if some loop inside etc.
+
+# TODO: reactor commands to return string instead of calling print function inside or pass insert_message function to
+#  command if some loop inside etc.
 def main():
     book = load_data()
     notebook = NoteBook()
@@ -94,7 +97,7 @@ def main():
             delete_contact(args, book)
             insert_message("Contact deleted.\n")
         elif command == "show":
-            result = show_phone(book,*args)
+            result = show_phone(book, *args)
             insert_message(f"{result}\n")
         elif command == "all":
             result = show_all(book)
@@ -140,6 +143,7 @@ def main():
     # Bind the Return key to the handle_input function
     user_input.bind("<Return>", handle_input)
     window.mainloop()
+
 
 if __name__ == "__main__":
     main()
