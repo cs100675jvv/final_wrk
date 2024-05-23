@@ -75,7 +75,7 @@ def main():
 
     def handle_input(event):
         # Get the user input and clear the input field
-        # git 
+        # Parsing with cleanup of non-alphanumeric characters, whitespaces and converting command to lowercase
         input_data = re.sub(r'\W+', ' ', user_input.get().strip())
         command, *args = parse_input(input_data)
         command = command.lower()
