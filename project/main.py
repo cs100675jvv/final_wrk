@@ -35,12 +35,11 @@ def main():
 
         elif command == "show":
             show_phone(args, book)
-
         elif command == "change":
             change_contact(args, book)
 
         elif command == "phone":
-            show_phone (args, book)
+            show_phone(args, book)
 
         elif command == "all":
             show_all(book)
@@ -49,14 +48,13 @@ def main():
             add_birthday(args, book)
 
         elif command == "change-birthday":
-            change_birthday(args, book)    
+            change_birthday(args, book)
 
         elif command == "show-birthday":
             show_birthday(args, book)
 
         elif command == "birthdays":
             birthdays(book)
-
 
         elif command == "add-note":
             add_note(args, notebook)
@@ -68,20 +66,19 @@ def main():
             add_email(args, book)
 
         elif command == "change-email":
-            change_email(args, book)  
+            change_email(args, book)
 
         elif command == "add-address":
             add_address(args, book)
 
         elif command == "change-address":
-            change_address(args, book)     
+            change_address(args, book)
 
         elif command == "help":
-            print_help() 
+            print_help()
 
         else:
             print("Invalid command.")
-
 
 
 if __name__ == "__main__":
