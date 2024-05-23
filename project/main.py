@@ -1,3 +1,4 @@
+import click
 from _function.parse import parse_input
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
 from _function.change_contact import change_contact, change_birthday, change_email, change_address
@@ -10,7 +11,7 @@ from _function.help import print_help
 from _classes.notes import NoteBook
 
 
-
+@click.command()
 def main():
     book = load_data()
     notebook = NoteBook()
