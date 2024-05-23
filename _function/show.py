@@ -9,16 +9,17 @@ def show_phone(args, book: 'AddressBook'):
     name, *_ = args
     record = book.find(name)
     if record:
-        return print(f"Contact {name} has phone: {'; '.join(str(p) for p in record.phones)}")
+        return f"Contact {name} has phone: {'; '.join(str(p) for p in record.phones)}"
     else:
-        return print(f"Contact {name} not found in our dictionary.")
+        return f"Contact {name} not found in our dictionary."
 
 
 def show_all(book: 'AddressBook'):
+    result = []
     for name, record in book.items():
         phones = [phone.value for phone in record.phones]
-        print(f"Name: {record.name}; Phones: {', '.join(phones)}; Email: {record.email}; Address: {record.address}")
-
+        result.append(f"Name: {record.name}; Phones: {', '.join(phones)}; Email: {record.email}; Address: {record.address}")
+    return '\n'.join(result)
 
 @input_error_name
 def show_birthday(args, book: 'AddressBook'):
