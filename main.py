@@ -1,12 +1,6 @@
-import os
-import sys
-sys.path.append(os.getcwd())
-
 import re
 import tkinter as tk
 from tkinter import font as tkfont
-
-
 from _classes.notes import NoteBook
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
 from _function.add_note import add_note
