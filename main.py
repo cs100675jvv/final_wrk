@@ -52,8 +52,12 @@ class FirstWordCompleter(Completer):
 
     def get_completions(self, document, complete_event):
         # Якщо курсор знаходиться на першому слові, використовувати completer
-        if document.cursor_position_row == 0 and len(document.text_before_cursor.split()) <= 1:
-            yield from self.completer.get_completions(document, complete_event)
+        # if document.cursor_position_row == 0 and len(document.text_before_cursor.split()) <= 1:
+        text_before_cursor = document.text_before_cursor
+        if ' ' in text_before_cursor:
+            return
+        
+        yield from self.completer.get_completions(document, complete_event)
 
 def main():
     book = load_data(filename=f"{data_path}/addressbook.pkl", class_name="AddressBook")
