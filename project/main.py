@@ -1,6 +1,6 @@
 import re
 import tkinter as tk
-import tkinter
+from tkinter import font as tkfont
 
 from _classes.notes import NoteBook
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
@@ -35,7 +35,7 @@ def init_gui():
     window.configure(bg='#212121')
 
     # Define the font
-    custom_font = tkinter.font.Font(family="ui-sans-serif", size=12)
+    custom_font = tkfont.Font(family="ui-sans-serif", size=12)
 
     # Canvas for the rounded rectangle
     canvas = tk.Canvas(window, bg='#212121', bd=0, highlightthickness=0)
@@ -55,8 +55,7 @@ def init_gui():
     return window, canvas, user_input, messages
 
 
-# TODO: reactor commands to return string instead of calling print function inside or pass insert_message function to
-#  command if some loop inside etc.
+# TODO: reactor commands to return string instead of calling print function inside or pass insert_message function to command if some loop inside etc.
 def main():
     book = load_data()
     notebook = NoteBook()
