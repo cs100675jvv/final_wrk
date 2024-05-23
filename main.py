@@ -27,6 +27,7 @@ commands = [
     'close',
     'exit',
     'hello',
+    'help',
     'add',
     'change',
     'delete',
