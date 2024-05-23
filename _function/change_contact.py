@@ -35,10 +35,10 @@ def change_email(args, book: 'AddressBook'):
         return print(f"Contact {name} not found in our dictionary.")
     
 def change_address(args, book: 'AddressBook'):
-    name, address, new_address, *_ = args
+    name, address, *_ = args
     record = book.find(name)
     if record:
-        record.edit_address(address, new_address)
-        return print(f"Contact {name} now has address: {new_address}")
+        record.edit_address(address)
+        return print(f"Contact {name} now has address: {address}")
     else:
         return print(f"Contact {name} not found in our dictionary.")

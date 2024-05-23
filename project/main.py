@@ -10,6 +10,7 @@ from _function.show import show_phone, show_all, show_birthday, birthdays
 from _function.save_load_data import save_data, load_data
 from _function.add_note import add_note
 from _function.list_notes import list_notes
+from _function.help import print_help
 from _classes.notes import NoteBook
 
 # TODO: move to separate file?
