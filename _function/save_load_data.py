@@ -1,12 +1,21 @@
+import os
 import pickle
+
 from _classes.adress_book import AddressBook
 from _classes.notes import NoteBook
 
-def save_data(book, filename):
-    with open(filename, "wb") as f:
+# def load_data(filename, class_name=None):
+data_path = "./_files"
+
+
+def save_data(book, filename=f"{data_path}/addressbook.pkl"):
+    if not os.path.exists(data_path):
+        os.makedirs(data_path)
+    with open(filename, "ab") as f:
         pickle.dump(book, f)
 
-def load_data(filename, class_name=None):
+
+def load_data(filename=f"{data_path}/addressbook.pkl", class_name=None):
     try:
         with open(filename, "rb") as f:
             return pickle.load(f)

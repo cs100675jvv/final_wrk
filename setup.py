@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='assistantbot',
@@ -14,7 +14,7 @@ setup(
     ],
     entry_points='''
         [console_scripts]
-        assistantbot=project.main:main
+        assistantbot=main:main
     ''',
     python_requires='>=3.0',
 )

@@ -1,6 +1,7 @@
-import re
 import datetime
+import re
 from collections import UserDict
+
 
 class Note:
     def __init__(self, header: str, body: str = ""):
@@ -10,7 +11,8 @@ class Note:
         self.size = len(body)
         self.id = self._generate_id(header)
 
-    def _generate_id(self, header: str) -> str:
+    @staticmethod
+    def _generate_id(header: str) -> str:
         normalized_header = re.sub(r'\W+', '_', header.lower())
         return normalized_header
 
@@ -21,11 +23,12 @@ class Note:
                 f"Creation Date: {self.creation_date}\n"
                 f"Size: {self.size} characters")
 
+
 class NoteBook(UserDict):
     def add_note(self, note: Note):
         self.data[note.id] = note
 
-    def get_note_by_id(self, note_id: str) -> Note:
+    def get_note_by_id(self, note_id: str) -> None:
         return self.data.get(note_id, None)
 
     def remove_note_by_id(self, note_id: str):

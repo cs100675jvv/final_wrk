@@ -1,23 +1,28 @@
 from datetime import datetime
-from _decorator.decorator import input_error_name, input_error_name
-from _function.upcoming_birthdays import get_upcoming_birthdays
-from _classes.adress_book import AddressBook
 
+from _classes.adress_book import AddressBook
+from _decorator.decorator import input_error_name
+from _function.upcoming_birthdays import get_upcoming_birthdays
 
 
 @input_error_name
-def show_phone (args, book: 'AddressBook'):
+def show_phone(args, book: 'AddressBook'):
     name, *_ = args
     record = book.find(name)
     if record:
-        return print(f"Contact {name} has phone: {'; '.join(str(p) for p in record.phones)}")
+        return f"Contact {name} has phone: {'; '.join(str(p) for p in record.phones)}"
     else:
-        return print(f"Contact {name} not found in our dictionary.")
+        return f"Contact {name} not found in our dictionary."
 
 
-def show_all (book: 'AddressBook'):
-    for name, phone, email, address in book.items():
-        print(f"{name}: {phone}: {email}: {address}")
+def show_all(book: 'AddressBook'):
+    result = []
+    for name, record in book.items():
+        phones = [phone.value for phone in record.phones]
+        result.append(
+            f"Name: {record.name}; Phones: {', '.join(phones)}; Email: {record.email}; Address: {record.address}")
+    return '\n'.join(result)
+
 
 @input_error_name
 def show_birthday(args, book: 'AddressBook'):
@@ -29,7 +34,8 @@ def show_birthday(args, book: 'AddressBook'):
     else:
         return print(f"Contact {name} not found in our dictionary.")
 
+
 def birthdays(book: 'AddressBook'):
-    birthdays = get_upcoming_birthdays(book)
-    for birthday in birthdays:
+    birthday_list = get_upcoming_birthdays(book)
+    for birthday in birthday_list:
         print(birthday)
