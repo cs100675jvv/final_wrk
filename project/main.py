@@ -1,6 +1,5 @@
 from _function.parse import parse_input
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
-# from _function.add_birthday import add_birthday
 from _function.change_contact import change_contact, change_birthday, change_email, change_address
 from _function.delete_contact import delete_contact
 from _function.show import show_phone, show_all, show_birthday, birthdays
@@ -10,6 +9,7 @@ from _function.list_notes import list_notes
 from _function.show_note import show_note
 from _function.edit_note import edit_note
 from _function.delete_note import delete_note
+from _function.help import print_help
 from _classes.notes import NoteBook
 
 
@@ -87,6 +87,8 @@ def main():
         elif command == "change-address":
             change_address(args, book)     
 
+        elif command == "help":
+            print_help() 
 
         else:
             print("Invalid command.")
