@@ -83,7 +83,7 @@ def main():
             result = delete_contact(args, book)
             console.print(result)
         elif command == "show_phone":
-            result = show_phone(book, *args)
+            result = show_phone(args, book)
             console.print(result)
         elif command == "all":
             result = show_all(book)
