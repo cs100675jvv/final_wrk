@@ -38,4 +38,4 @@ def show_birthday(args, book: 'AddressBook'):
 def birthdays(book: 'AddressBook'):
     birthday_list = get_upcoming_birthdays(book)
     for birthday in birthday_list:
-        print(birthday)
+        return birthday

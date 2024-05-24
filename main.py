@@ -102,10 +102,10 @@ def main():
                 console.print("No contacts found.\n")
         elif command == "add_birthday":
             add_birthday(args, book)
-            console.print("Birthday added.\n")
+            # console.print("Birthday added.\n")
         elif command == "change_birthday":
             change_birthday(args, book)
-            console.print("Birthday changed.\n")
+            # console.print("Birthday changed.\n")
         elif command == "show_birthday":
             result = show_birthday(args, book)
             console.print(f"Birthday: {result}\n")
@@ -128,16 +128,16 @@ def main():
         
         elif command == "add_email":
             add_email(book, *args)
-            console.print("Email added.\n")
+            # console.print("Email added.\n")
         elif command == "change_email":
             change_email(args, book)
-            console.print("Email changed.\n")
+            # console.print("Email changed.\n")
         elif command == "add_address":
             add_address(args, book)
-            console.print("Address added.\n")
+            # console.print("Address added.\n")
         elif command == "change_address":
             change_address(args, book)
-            console.print("Address changed.\n")
+            # console.print("Address changed.\n")
         elif command == "help":
             console.print(print_help())
         else:
