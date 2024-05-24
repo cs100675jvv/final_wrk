@@ -1,3 +1,8 @@
+# def parse_input(user_input):
+#     cmd, *args = user_input.split()
+#     cmd = cmd.strip().lower()
+#     return cmd, *args
+
 def parse_input(user_input):
     if not user_input.strip():
         print("Please, give me a command.")
@@ -27,3 +32,4 @@ def parse_input(user_input):
 #     except Exception:
 #         print("Please, give me a command.")
 #         return None, []
+
