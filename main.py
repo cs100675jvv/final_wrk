@@ -37,6 +37,7 @@ commands = [
     'all',
     'add_birthday',
     'show_birthday',
+    'change_birthday',
     'birthdays',
     'add_note',
     'list_notes',
@@ -48,7 +49,12 @@ commands = [
     'change_email',
     'add_address',
     'change_address',
-    'search'
+    'search',
+    'save',
+    'save_secure',
+    'load',
+    'load_secure',
+    'yes'
 ]
 
 completer = WordCompleter(commands, ignore_case=True)
@@ -93,13 +99,13 @@ def main():
         elif command == "save":
             data_manager.save_data_plain(data_bundle, data_file_name)
             changes_made = False
-        elif command == "save-secure":
+        elif command == "save_secure":
             data_manager.save_data_encrypted(data_bundle, data_file_name)
             changes_made = False
         elif command == "load":
             data_manager.load_data_plain(data_file_name)
             changes_made = False
-        elif command == "load-secure":
+        elif command == "load_secure":
             data_manager.load_data_encrypted(data_file_name)
             changes_made = False
         elif command in ["close", "exit"]:
