@@ -87,10 +87,7 @@ def main():
             console.print(result)
         elif command == "all":
             result = show_all(book)
-            if result:
-                console.print(f"{result}")
-            else:
-                console.print("No contacts found.")
+            console.print(result)
         elif command == "add_birthday":
             result = add_birthday(args, book)
             console.print(result)
