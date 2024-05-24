@@ -1,5 +1,5 @@
-from _decorator.decorator import input_error_name
 from _classes.adress_book import AddressBook
+from _decorator.decorator import input_error_name
 
 
 @input_error_name

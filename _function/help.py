@@ -22,10 +22,12 @@ def print_help():
     ]
 
     max_command_length = max(len(command) for command, _ in commands)
-    
-    print(f"{'Команда'.ljust(max_command_length)} | Опис")
-    print("-" * (max_command_length + 1) + "+" + "-" * 70)
+
+    lines = []
+    lines.append(f"{'Команда'.ljust(max_command_length)} | Опис")
+    lines.append("-" * (max_command_length + 3) + "+" + "-" * 40)
 
     for command, description in commands:
-        print(f"{command.ljust(max_command_length)} | {description}")
+        lines.append(f"{command.ljust(max_command_length)} | {description}")
 
+    return '\n'.join(lines)
