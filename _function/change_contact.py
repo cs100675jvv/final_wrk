@@ -33,9 +33,9 @@ def change_email(args, book: 'AddressBook'):
     record = book.find(name)
     if record:
         record.edit_email(email, new_email)
-        return print(f"Contact {name} now has email: {new_email}")
+        return f"Contact {name} now has email: {new_email}"
     else:
-        return print(f"Contact {name} not found in our dictionary.")
+        return f"Contact {name} not found in our dictionary."
 
 
 def change_address(args, book: 'AddressBook'):

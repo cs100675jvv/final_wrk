@@ -96,7 +96,7 @@ def main():
             # console.print("Birthday changed.\n")
         elif command == "show_birthday":
             result = show_birthday(args, book)
-            console.print(f"Birthday: {result}")
+            console.print(result)
         elif command == "birthdays":
             upcoming_birthdays = get_upcoming_birthdays(book)
             result = print_upcoming_birthdays(upcoming_birthdays)
@@ -119,8 +119,8 @@ def main():
             result = add_email(args, book)
             console.print(result)
         elif command == "change_email":
-            change_email(args, book)
-            # console.print("Email changed.\n")
+            result = change_email(args, book)
+            console.print(result)
         elif command == "add_address":
             result = add_address(args, book)
             console.print(result)
