@@ -28,17 +28,17 @@ def input_error(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            return "Invalid phone number. Phone number should contain only digits and be at least 10 digits long."
         except NameValidationError:
-            print("Invalid name. Name should contain only letters.")
+            return "Invalid name. Name should contain only letters with capital first."
         except KeyError:
-            print("Enter user name")
+            return "Enter user name."
         except ValueError:
-            print("Give me name and phone please")
+            return "Give me name and phone please."
         except IndexError:
-            print("Missing arguments")
+            return "Missing arguments"
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            return f"Error in {func.__name__}: {e}"
 
     return inner
 
@@ -60,17 +60,17 @@ def input_error_phones(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            return "Invalid phone number. Phone number should contain only digits and be at least 10 digits long."
         except NameValidationError:
-            print("Invalid name. Name should contain only letters.")
+            return "Invalid name. Name should contain only letters with capital first."
         except KeyError:
-            print("Enter user name")
+            return "Enter user name."
         except ValueError:
-            print("Give me name and phones please")
+            return "Give me name and phones please."
         except IndexError:
-            print("Missing arguments")
+            return "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            return f"Error in {func.__name__}: {e}"
 
     return inner
 
@@ -86,17 +86,17 @@ def input_error_name(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            return "Invalid phone number. Phone number should contain only digits and be at least 10 digits long."
         except NameValidationError:
-            print("Invalid name. Name should contain only letters.")
+            return "Invalid name. Name should contain only letters with capital first."
         except KeyError:
-            print("Enter user name")
+            return "Enter user name."
         except ValueError:
-            print("Give me name please")
+            return "Give me name please."
         except IndexError:
-            print("Missing arguments")
+            return "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            return f"Error in {func.__name__}: {e}"
 
     return inner
 
@@ -117,17 +117,17 @@ def input_error_birthday(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            return "Invalid phone number. Phone number should contain only digits and be at least 10 digits long."
         except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital letter first.")
+            return "Invalid name. Name should contain only letters with capital first."
         except KeyError:
-            print("Enter user name")
+            return "Enter user name."
         except ValueError:
-            print("Give me name and birthday please")
+            return "Give me name and birthday please."
         except IndexError:
-            print("Missing arguments")
+            return "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            return f"Error in {func.__name__}: {e}"
 
     return inner
 
@@ -147,17 +147,17 @@ def input_error_email(func):
             return func(*args, **kwargs)
 
         except EmailValidationError:
-            print('Invalid email. Please, enter a real email.')
+            return "Invalid email. Please, enter a real email."
         except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital letter first.")
+            return "Invalid name. Name should contain only letters with capital first."
         except KeyError:
-            print("Enter user name")
+            return "Enter user name."
         except ValueError:
-            print("Give me name and email please")
+            return "Give me name and email please."
         except IndexError:
-            print("Missing arguments")
+            return "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            return f"Error in {func.__name__}: {e}"
 
     return inner
 
@@ -180,17 +180,17 @@ def input_error_emailes(func):
             return func(*args, **kwargs)
 
         except EmailValidationError:
-            print('Invalid email. Please, enter a real email.')
+            return "Invalid email. Please, enter a real email."
         except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital letter first.")
+            return "Invalid name. Name should contain only letters with capital first."
         except KeyError:
-            print("Enter user name")
+            return "Enter user name."
         except ValueError:
-            print("Give me name and emailes please")
+            return "Give me name and emailes please."
         except IndexError:
-            print("Missing arguments")
+            return "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            return f"Error in {func.__name__}: {e}"
 
     return inner
 
@@ -200,12 +200,12 @@ def input_error_note(func):
             return func(*args, **kwargs)
         
         except KeyError:
-            print ("KeyError")
+            return "KeyError"
         except ValueError:
-            print ("Please specify note_id")
+            return "Please specify note_id"
         except IndexError:
-            print ("Missing arguments")
+            return "Missing arguments"
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            return f"Error in {func.__name__}: {e}"
 
     return inner

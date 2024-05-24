@@ -30,17 +30,21 @@ commands = [
     'add',
     'change',
     'delete',
-    'show',
+    'show_phone',
     'all',
     'add_birthday',
     'show_birthday',
     'birthdays',
-    'add-note',
-    'list-notes',
-    'show-note',
-    'edit-note',
-    'delete-note',
-    'find-note'
+    'add_note',
+    'list_notes',
+    'show_note',
+    'edit_note',
+    'delete_note',
+    'find_note',
+    'add_email',
+    'change_email',
+    'add_address',
+    'change_address'
 ]
 
 completer = WordCompleter(commands, ignore_case=True)
@@ -87,7 +91,7 @@ def main():
         elif command == "delete":
             delete_contact(args, book)
             console.print("Contact deleted.\n")
-        elif command == "show":
+        elif command == "show_phone":
             result = show_phone(book, *args)
             console.print(f"{result}\n")
         elif command == "all":
@@ -109,29 +113,29 @@ def main():
             result = birthdays(book)
             console.print(f"Upcoming birthdays: {result}\n")
         
-        elif command == "add-note":
+        elif command == "add_note":
             add_note(args, notebook)
-        elif command == "delete-note":
+        elif command == "delete_note":
             delete_note(args, notebook)
-        elif command == "list-notes":
+        elif command == "list_notes":
             list_notes(notebook)
-        elif command == "show-note":
+        elif command == "show_note":
             show_note(args, notebook)
-        elif command == "edit-note":
+        elif command == "edit_note":
             edit_note(args, notebook)
-        elif command == "find-note":
+        elif command == "find_note":
             find_note(args, notebook)
         
-        elif command == "add-email":
+        elif command == "add_email":
             add_email(book, *args)
             console.print("Email added.\n")
-        elif command == "change-email":
+        elif command == "change_email":
             change_email(args, book)
             console.print("Email changed.\n")
-        elif command == "add-address":
+        elif command == "add_address":
             add_address(args, book)
             console.print("Address added.\n")
-        elif command == "change-address":
+        elif command == "change_address":
             change_address(args, book)
             console.print("Address changed.\n")
         elif command == "help":

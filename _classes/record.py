@@ -50,12 +50,12 @@ class Record:
     def edit_mail(self, new_email):
         self.email = new_email
         return
-
-    def add_address(self, address):
+    
+    def add_addr(self, address):
         self.address = Address(address)
-        return
+        return 
 
-    def edit_address(self, new_address):
+    def edit_addr(self, new_address):
         self.address = new_address
         return
 
