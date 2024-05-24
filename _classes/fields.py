@@ -22,11 +22,6 @@ class Phone(Field):
     def __init__(self, value):
         super().__init__(value)
 
-    # def validate(self):
-    #     if not re.match(r'^\d{10}$', self.value):
-    #         raise ValueError("Invalid phone number format. Phone number should contain 10 digits.")
-
-
 class Birthday(Field):
     def __init__(self, value):
         super().__init__(value)

@@ -8,7 +8,7 @@ def print_help():
         ("all", "Показати всі контакти в адресній книзі."),
         ("add-birthday [name] [date of birth]", "Додати дату народження для вказаного контакту."),
         ("show-birthday [name]", "Показати дату народження для вказаного контакту."),
-        ("change-birthday [name]", ""),
+        ("change-birthday [name]", "Змінити день народження для контакта."),
         ("birthdays", "Показати дні народження, які наближаються протягом наступного тижня."),
         ("add-email [name] [email]", "Додати email до контакту. Може бути кілька емейлів."),
         ("change-email [name] [old-email] [new-email]", "Змінити email для вказаного контакту."),
@@ -17,17 +17,25 @@ def print_help():
         ("hello", "Надіслати привітання від бота."),
         ("add-note [name]", "Відкрити редактор для тексту нотатки. Введіть :end для завершення редагування."),
         ("", "Після цього нотатка буде додана."),
-        ("list-notes", "Показати список всіх нотаток."),
+        ("find_note [string]",  "Знайти нотаток по строці."),
+        ("delete_note [ID]", "Видалити нототок."),
+        ("show_note [ID]", "Показати нотаток."),
+        ("edit_note [ID]", "Редагувати нотаток."),
+        ("list-notes", "Показати список всіх нотаток [ID and DATE]."),
+        ("search [string]", "Пошук в контактах по строці"),
         ("close або exit", "Закрити програму.")
     ]
 
+    
+    # Визначаємо максимальну довжину команди для гарного форматування
     max_command_length = max(len(command) for command, _ in commands)
+    
+    # Виводимо заголовок таблиці
+    print(f"{'Команда'.ljust(max_command_length)} | Опис")
+    print("-" * (max_command_length + 1) + "+" + "-" * 70)
 
-    lines = []
-    lines.append(f"{'Команда'.ljust(max_command_length)} | Опис")
-    lines.append("-" * (max_command_length + 3) + "+" + "-" * 40)
-
+    # Виводимо кожну команду з описом
     for command, description in commands:
-        lines.append(f"{command.ljust(max_command_length)} | {description}")
+        print(f"{command.ljust(max_command_length)} | {description}")
 
-    return '\n'.join(lines)
+    

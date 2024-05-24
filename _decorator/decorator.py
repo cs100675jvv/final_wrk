@@ -150,12 +150,12 @@ def input_error_email(func):
             print("Invalid email. Please, enter a real email.")
         except NameValidationError:
             print("Invalid name. Name should contain only letters with capital first.")
-        # except KeyError:
-        #     print("Enter user name.")
-        # except ValueError:
-        #     print("Give me name and email please.")
-        # except IndexError:
-        #     print("Missing arguments.")
+        except KeyError:
+            print("Enter user name.")
+        except ValueError:
+            print("Give me name and email please.")
+        except IndexError:
+            print("Missing arguments.")
         except Exception as e:
             print(f"Error in {func.__name__}: {e}")
 
