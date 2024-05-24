@@ -143,7 +143,7 @@ def main():
         elif command == "search":
             search_all(args, book)
         elif command == "help":
-            console.print(print_help())
+            print_help()
         else:
             console.print("[red]Invalid command[/red].\n")
 
