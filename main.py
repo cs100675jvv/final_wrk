@@ -16,6 +16,7 @@ from _function.find_note import find_note
 from _function.parse import parse_input
 from _function.save_load_data import DataManager
 from _function.show import show_phone, show_all, show_birthday, birthdays
+from _function.search import search_all
 
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter, Completer
@@ -46,7 +47,8 @@ commands = [
     'add_email',
     'change_email',
     'add_address',
-    'change_address'
+    'change_address',
+    'search'
 ]
 
 completer = WordCompleter(commands, ignore_case=True)
@@ -167,7 +169,7 @@ def main():
 
         # commands - email and address
         elif command == "add_email":
-            add_email(book, *args)
+            add_email(args, book)
             changes_made = True
             # console.print("Email added.\n")
         elif command == "change_email":
@@ -182,12 +184,8 @@ def main():
             change_address(args, book)
             changes_made = True
             # console.print("Address changed.\n")
-
-        # commands - miscellaneous
-        elif command == "hello":
-            console.print("How can I help you?\n")
         elif command == "help":
-            console.print(print_help())
+            print_help()
         else:
             console.print("[red]Invalid command[/red].\n")
 
