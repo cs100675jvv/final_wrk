@@ -33,9 +33,3 @@ def show_birthday(args, book: 'AddressBook'):
         return print(f"Contact {name} has birthday: {date_obj.strftime('%d-%m-%Y')}")
     else:
         return print(f"Contact {name} not found in our dictionary.")
-
-
-def birthdays(book: 'AddressBook'):
-    birthday_list = get_upcoming_birthdays(book)
-    for birthday in birthday_list:
-        print(birthday)

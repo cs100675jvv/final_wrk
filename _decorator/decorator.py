@@ -106,9 +106,6 @@ def input_error_birthday(func):
         try:
             name, birthday, *_ = args[0]
 
-            if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
-                raise NameValidationError
-
             birthday_obj = datetime.strptime(birthday, '%d.%m.%Y')  # Перевірка та створення об'єкта дати
             current_year = datetime.now().year
             if birthday_obj.year < 1900 or birthday_obj.year > current_year:
@@ -116,18 +113,15 @@ def input_error_birthday(func):
 
             return func(*args, **kwargs)
 
-        except PhoneValidationError:
-            print("Invalid phone number. Phone number should contain only digits and be at least 10 digits long.")
-        except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
-            print("Enter user name.")
+            message = "Enter user name."
         except ValueError:
-            print("Give me name and birthday please.")
+            message = "Give me name and birthday please."
         except IndexError:
-            print("Missing arguments.")
+            message = "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            message = f"Error in {func.__name__}: {e}"
+        return message
 
     return inner
 
@@ -200,12 +194,13 @@ def input_error_note(func):
             return func(*args, **kwargs)
         
         except KeyError:
-            return "KeyError"
+            message = "KeyError"
         except ValueError:
-            return "Please specify note_id"
+            message = "Please specify note_id"
         except IndexError:
-            return "Missing arguments"
+            message = "Missing arguments"
         except Exception as e:
-            return f"Error in {func.__name__}: {e}"
+            message = f"Error in {func.__name__}: {e}"
+        return message
 
     return inner

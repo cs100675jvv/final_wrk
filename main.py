@@ -17,7 +17,8 @@ from _function.help import print_help
 from _function.find_note import find_note
 from _function.parse import parse_input
 from _function.save_load_data import save_data, load_data
-from _function.show import show_phone, show_all, show_birthday, birthdays
+from _function.show import show_phone, show_all, show_birthday
+from _function.upcoming_birthdays import get_upcoming_birthdays, print_upcoming_birthdays
 from _function.search import search_all
 
 DATA_PATH = "./_files"
@@ -71,37 +72,38 @@ def main():
             console.print("[red]Good bye![/red]")
             break
         elif command == "hello":
-            console.print("How can I help you?\n")
+            console.print("How can I help you?")
         elif command == "add":
             result = add_contact(args, book)
-            console.print(f"{result}\n")
+            console.print(f"{result}")
         elif command == "change":
             change_contact(args, book)
-            console.print("Contact changed.\n")
+            console.print("Contact changed.")
         elif command == "delete":
             delete_contact(args, book)
-            console.print("Contact deleted.\n")
+            console.print("Contact deleted.")
         elif command == "show_phone":
             result = show_phone(book, *args)
-            console.print(f"{result}\n")
+            console.print(f"{result}")
         elif command == "all":
             result = show_all(book)
             if result:
-                console.print(f"{result}\n")
+                console.print(f"{result}")
             else:
-                console.print("No contacts found.\n")
+                console.print("No contacts found.")
         elif command == "add_birthday":
-            add_birthday(args, book)
-            # console.print("Birthday added.\n")
+            result = add_birthday(args, book)
+            console.print(result)
         elif command == "change_birthday":
             change_birthday(args, book)
             # console.print("Birthday changed.\n")
         elif command == "show_birthday":
             result = show_birthday(args, book)
-            console.print(f"Birthday: {result}\n")
+            console.print(f"Birthday: {result}")
         elif command == "birthdays":
-            result = birthdays(book)
-            console.print(f"Upcoming birthdays: {result}\n")
+            upcoming_birthdays = get_upcoming_birthdays(book)
+            result = print_upcoming_birthdays(upcoming_birthdays)
+            console.print(result)
         
         elif command == "add_note":
             add_note(args, notebook)
@@ -117,14 +119,14 @@ def main():
             find_note(args, notebook)
         
         elif command == "add_email":
-            add_email(args, book)
-            # console.print("Email added.\n")
+            result = add_email(args, book)
+            console.print(result)
         elif command == "change_email":
             change_email(args, book)
             # console.print("Email changed.\n")
         elif command == "add_address":
-            add_address(args, book)
-            # console.print("Address added.\n")
+            result = add_address(args, book)
+            console.print(result)
         elif command == "change_address":
             change_address(args, book)
             # console.print("Address changed.\n")
