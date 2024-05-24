@@ -10,7 +10,7 @@ from _function.edit_note import edit_note
 from _function.delete_note import delete_note
 from _function.change_contact import change_contact, change_birthday, change_email, change_address
 from _function.delete_contact import delete_contact
-from _function.display_help import display_help
+from _function.help import print_help
 from _function.find_note import find_note
 from _function.parse import parse_input
 from _function.save_load_data import save_data, load_data
@@ -135,7 +135,7 @@ def main():
             change_address(args, book)
             console.print("Address changed.\n")
         elif command == "help":
-            console.print(display_help())
+            console.print(print_help())
         else:
             console.print("[red]Invalid command[/red].\n")
 
