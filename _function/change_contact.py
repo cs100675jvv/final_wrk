@@ -10,9 +10,10 @@ def change_contact(args, book: 'AddressBook'):
     record = book.find(name)
     if record:
         record.edit_phone(phone, new_phone)
-        return print(f"Contact {name} now has phone: {new_phone}")
+        message = f"Contact {name} now has phone: {new_phone}"
     else:
-        return print(f"Contact {name} not found in our dictionary.")
+        message = f"Contact {name} not found in our dictionary."
+    return message
 
 
 @input_error_birthday

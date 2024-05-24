@@ -75,16 +75,16 @@ def main():
             console.print("How can I help you?")
         elif command == "add":
             result = add_contact(args, book)
-            console.print(f"{result}")
+            console.print(result)
         elif command == "change":
-            change_contact(args, book)
-            console.print("Contact changed.")
+            result = change_contact(args, book)
+            console.print(result)
         elif command == "delete":
-            delete_contact(args, book)
-            console.print("Contact deleted.")
+            result = delete_contact(args, book)
+            console.print(result)
         elif command == "show_phone":
             result = show_phone(book, *args)
-            console.print(f"{result}")
+            console.print(result)
         elif command == "all":
             result = show_all(book)
             if result:
