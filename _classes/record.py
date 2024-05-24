@@ -11,7 +11,6 @@ class Record:
 
     def add_phone(self, phone):
         phone_field = Phone(phone)
-        # phone_field.validate()
         self.phones.append(phone_field)
 
     def delete_phone(self, phone):
@@ -25,7 +24,6 @@ class Record:
         for phone_field in self.phones:
             if phone_field.value == phone:
                 phone_field.value = new_phone
-                # phone_field.validate()
                 return
         raise ValueError("Phone number not found.")
 
