@@ -1,7 +1,10 @@
-# import re
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from rich.console import Console
 # import tkinter as tk
 # from tkinter import font as tkfont
-# from _classes.notes import NoteBook
+
+from _classes.command_completer import CommandCompleter
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
 from _function.add_note import add_note
 from _function.list_notes import list_notes
@@ -17,11 +20,7 @@ from _function.save_load_data import save_data, load_data
 from _function.show import show_phone, show_all, show_birthday, birthdays
 from _function.search import search_all
 
-from prompt_toolkit import prompt
-from prompt_toolkit.completion import WordCompleter, Completer
-from rich.console import Console
-
-data_path = "./_files"
+DATA_PATH = "./_files"
 
 commands = [
     'close',
@@ -53,33 +52,22 @@ completer = WordCompleter(commands, ignore_case=True)
 
 console = Console()
 
-class FirstWordCompleter(Completer):
-    def __init__(self, completer):
-        self.completer = completer
-
-    def get_completions(self, document, complete_event):
-        text_before_cursor = document.text_before_cursor
-        if ' ' in text_before_cursor:
-            return
-        
-        yield from self.completer.get_completions(document, complete_event)
-
 def main():
-    book = load_data(filename=f"{data_path}/addressbook.pkl", class_name="AddressBook")
-    notebook = load_data(filename=f"{data_path}/notebook.pkl", class_name="NoteBook")
+    book = load_data(filename=f"{DATA_PATH}/addressbook.pkl", class_name="AddressBook")
+    notebook = load_data(filename=f"{DATA_PATH}/notebook.pkl", class_name="NoteBook")
 
     print("Hello. How can I help you today?\n")
 
     while True:
-        user_input = prompt('>>> ', completer=FirstWordCompleter(completer))
+        user_input = prompt('>>> ', completer=CommandCompleter(completer))
         command, *args = parse_input(user_input)
         
         if not command:
                 continue
         
         if command in ["close", "exit"]:
-            save_data(book, filename=f"{data_path}/addressbook.pkl")
-            save_data(notebook, filename=f"{data_path}/notebook.pkl")
+            save_data(book, filename=f"{DATA_PATH}/addressbook.pkl")
+            save_data(notebook, filename=f"{DATA_PATH}/notebook.pkl")
             console.print("[red]Good bye![/red]")
             break
         elif command == "hello":
