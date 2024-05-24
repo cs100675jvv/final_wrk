@@ -129,7 +129,7 @@ def main():
             find_note(args, notebook)
         
         elif command == "add_email":
-            add_email(book, *args)
+            add_email(args, book)
             # console.print("Email added.\n")
         elif command == "change_email":
             change_email(args, book)
