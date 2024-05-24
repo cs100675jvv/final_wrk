@@ -35,16 +35,9 @@ class Birthday(Field):
         except ValueError:
             raise ValueError("Invalid date format. Use DD.MM.YYYY")
 
-    # def validate(self):
-    #     current_year = datetime.now().year
-    #     if self.value.year < 1900 or self.value.year > current_year:
-    #         raise ValueError("Invalid year. Birth year should be between 1900 and current year.")
-
-
 class Email(Field):
     def __init__(self, value):
         super().__init__(value)
-
 
 class Address(Field):
     def __init__(self, value):

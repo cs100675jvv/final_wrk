@@ -35,17 +35,12 @@ class MultiLineInputBox(simpledialog.Dialog):
 
 def add_note(notebook="notebook"):
     """Function to add a new note"""
-    root = tk.Tk()
-    root.withdraw()  # Hide the main window
 
-    header = simpledialog.askstring("Input", "Enter the note header:", parent=root)
-    if not header:
-        return "Error: Note header cannot be empty."
+    if not args:
+        print("Note header cannot be empty. Please enter Note Header")
+        return
 
-    body = MultiLineInputBox(root, "Enter the note body:").result
-    if not body:
-        return "Error: Note body cannot be empty."
-
+    header = " ".join(args)
     note = Note(header)
     note.body = body
     note.size = len(note.body)

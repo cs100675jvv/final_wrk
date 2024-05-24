@@ -28,13 +28,13 @@ def input_error(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            print("Invalid phone number. Phone number should contain only digits and be at least 10 digits long.")
         except NameValidationError:
-            print("Invalid name. Name should contain only letters.")
+            print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
-            print("Enter user name")
+            print("Enter user name.")
         except ValueError:
-            print("Give me name and phone please")
+            print("Give me name and phone please.")
         except IndexError:
             print("Missing arguments")
         except Exception as e:
@@ -60,15 +60,15 @@ def input_error_phones(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            print("Invalid phone number. Phone number should contain only digits and be at least 10 digits long.")
         except NameValidationError:
-            print("Invalid name. Name should contain only letters.")
+            print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
-            print("Enter user name")
+            print("Enter user name.")
         except ValueError:
-            print("Give me name and phones please")
+            print("Give me name and phones please.")
         except IndexError:
-            print("Missing arguments")
+            print("Missing arguments.")
         except Exception as e:
             print(f"Error in {func.__name__}: {e}")
 
@@ -86,15 +86,15 @@ def input_error_name(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            print("Invalid phone number. Phone number should contain only digits and be at least 10 digits long.")
         except NameValidationError:
-            print("Invalid name. Name should contain only letters.")
+            print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
-            print("Enter user name")
+            print("Enter user name.")
         except ValueError:
-            print("Give me name please")
+            print("Give me name please.")
         except IndexError:
-            print("Missing arguments")
+            print("Missing arguments.")
         except Exception as e:
             print(f"Error in {func.__name__}: {e}")
 
@@ -104,7 +104,7 @@ def input_error_name(func):
 def input_error_birthday(func):
     def inner(*args, **kwargs):
         try:
-            name, birthday = args[0]
+            name, birthday, *_ = args[0]
 
             if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
                 raise NameValidationError
@@ -117,15 +117,15 @@ def input_error_birthday(func):
             return func(*args, **kwargs)
 
         except PhoneValidationError:
-            print('Invalid phone number. Phone number should contain only digits and be at least 10 digits long.')
+            print("Invalid phone number. Phone number should contain only digits and be at least 10 digits long.")
         except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital letter first.")
+            print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
-            print("Enter user name")
+            print("Enter user name.")
         except ValueError:
-            print("Give me name and birthday please")
+            print("Give me name and birthday please.")
         except IndexError:
-            print("Missing arguments")
+            print("Missing arguments.")
         except Exception as e:
             print(f"Error in {func.__name__}: {e}")
 
@@ -135,7 +135,7 @@ def input_error_birthday(func):
 def input_error_email(func):
     def inner(*args, **kwargs):
         try:
-            name, email = args[0]
+            name, email, *_ = args[0]
 
             if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
                 raise NameValidationError
@@ -147,15 +147,15 @@ def input_error_email(func):
             return func(*args, **kwargs)
 
         except EmailValidationError:
-            print('Invalid email. Please, enter a real email.')
+            print("Invalid email. Please, enter a real email.")
         except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital letter first.")
-        except KeyError:
-            print("Enter user name")
-        except ValueError:
-            print("Give me name and email please")
-        except IndexError:
-            print("Missing arguments")
+            print("Invalid name. Name should contain only letters with capital first.")
+        # except KeyError:
+        #     print("Enter user name.")
+        # except ValueError:
+        #     print("Give me name and email please.")
+        # except IndexError:
+        #     print("Missing arguments.")
         except Exception as e:
             print(f"Error in {func.__name__}: {e}")
 
@@ -180,16 +180,32 @@ def input_error_emailes(func):
             return func(*args, **kwargs)
 
         except EmailValidationError:
-            print('Invalid email. Please, enter a real email.')
+            print("Invalid email. Please, enter a real email.")
         except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital letter first.")
+            print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
-            print("Enter user name")
+            print("Enter user name.")
         except ValueError:
-            print("Give me name and emailes please")
+            print("Give me name and emailes please.")
         except IndexError:
-            print("Missing arguments")
+            print("Missing arguments.")
         except Exception as e:
             print(f"Error in {func.__name__}: {e}")
+
+    return inner
+
+def input_error_note(func):
+    def inner(*args, **kwargs):
+        try:
+            return func(*args, **kwargs)
+        
+        except KeyError:
+            return "KeyError"
+        except ValueError:
+            return "Please specify note_id"
+        except IndexError:
+            return "Missing arguments"
+        except Exception as e:
+            return f"Error in {func.__name__}: {e}"
 
     return inner
