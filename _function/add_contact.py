@@ -33,11 +33,13 @@ def add_birthday(args, book: AddressBook):
 def add_email(args, book: AddressBook):
     name, email, *_ = args
     record = book.find(name)
-    if record:
-        book.add_mail(email)
-        message = f"Contact {name} updated with email {email}."
+    message = f"Contact {name} updated with email {email}."
+    if record is None:
+        record = Record(name)
+        book.add_record(record)
+        message = f"Contact {name} added with email {email}."
     if email:
-        message = f"Contact {name} not found."
+        record.add_mail(email)
     return message
 
 
