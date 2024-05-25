@@ -18,6 +18,7 @@ from _function.parse import parse_input
 from _function.save_load_data import DataManager
 from _function.show import show_phone, show_all, show_birthday
 from _function.upcoming_birthdays import get_upcoming_birthdays, print_upcoming_birthdays
+from _function.search import search_all
 
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter, Completer
@@ -178,6 +179,8 @@ def main():
             changes_made = True
         elif command == "help":
             print_help()
+        elif command == "search":
+            search_all(args, book)
         else:
             console.print("[red]Invalid command[/red].\n")
 

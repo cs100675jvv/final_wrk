@@ -1,5 +1,3 @@
-from _decorator.decorator import input_error, input_error_birthday, input_error_email
-from _decorator.decorator import input_error_name
 from _classes.adress_book import AddressBook
 
 
@@ -25,9 +23,9 @@ def search_all(args, book: AddressBook):
             continue
 
         # Check if the search term matches the address
-#        if record.address and search_term in record.address.value.lower():
-#            results.append(record)
-#            continue
+        if record.address and search_term in record.address.value.lower():
+            results.append(record)
+            continue
 
         # Check if the search term matches the birthday
         if record.birthday and search_term in record.birthday.value.strftime('%d-%m-%Y').lower():
