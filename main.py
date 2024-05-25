@@ -180,7 +180,8 @@ def main():
         elif command == "help":
             print_help()
         elif command == "search":
-            search_all(args, book)
+            result = search_all(args, book)
+            console.print(result)
         else:
             console.print("[red]Invalid command[/red].\n")
 
