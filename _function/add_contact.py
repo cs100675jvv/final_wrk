@@ -14,7 +14,7 @@ def add_contact(args, book: AddressBook):
         message = "Contact added."
     if phone:
         record.add_phone(phone)
-    return print(message)
+    return message
 
 
 @input_error_birthday
@@ -23,9 +23,10 @@ def add_birthday(args, book: AddressBook):
     record = book.find(name)
     if record:
         record.add_birth(birthday)
-        print(f"Birthday for contact {name} updated.")
+        message = f"Birthday for contact {name} updated."
     else:
-        print(f"Contact {name} not found.")
+        message = f"Contact {name} not found."
+    return message
 
 
 @input_error_email
@@ -39,17 +40,18 @@ def add_email(args, book: AddressBook):
         message = f"Contact {name} added with email {email}."
     if email:
         record.add_mail(email)
-    return print(message)
+    return message
 
 
 def add_address(args, book: AddressBook):
     if len(args) < 2:
-        print("Please provide both name and address.")
-        return
+        message = "Please provide both name and address."
+        return message
     name, address = args
     record = book.find(name)
     if record is None:
         record = Record(name)
         book.add_record(record)
     record.add_addr(address)
-    print(f'Address {address} added')
+    message = f'Address {address} added'
+    return message

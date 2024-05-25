@@ -1,8 +1,9 @@
-# import re
-# import tkinter as tk
-# from tkinter import font as tkfont
-# from _classes.notes import NoteBook
+from prompt_toolkit import prompt
+from prompt_toolkit.completion import WordCompleter
+from rich.console import Console
 import getpass
+
+from _classes.command_completer import CommandCompleter
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
 from _function.add_note import add_note
 from _function.list_notes import list_notes
@@ -15,8 +16,8 @@ from _function.help import print_help
 from _function.find_note import find_note
 from _function.parse import parse_input
 from _function.save_load_data import DataManager
-from _function.show import show_phone, show_all, show_birthday, birthdays
-from _function.search import search_all
+from _function.show import show_phone, show_all, show_birthday
+from _function.upcoming_birthdays import get_upcoming_birthdays, print_upcoming_birthdays
 
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter, Completer
@@ -58,20 +59,8 @@ commands = [
 ]
 
 completer = WordCompleter(commands, ignore_case=True)
-
 console = Console()
 data_manager = DataManager(data_path)
-
-class FirstWordCompleter(Completer):
-    def __init__(self, completer):
-        self.completer = completer
-
-    def get_completions(self, document, complete_event):
-        text_before_cursor = document.text_before_cursor
-        if ' ' in text_before_cursor:
-            return
-        
-        yield from self.completer.get_completions(document, complete_event)
 
 def main():
     # loading data plain by default
@@ -85,11 +74,11 @@ def main():
     changes_made = False
 
     # greeting
-    print("Hello. How can I help you today?\n")
+    console.print("Hello. How can I help you today?\n")
     
     # user interaction loop
     while True:
-        user_input = prompt('>>> ', completer=FirstWordCompleter(completer))
+        user_input = prompt('>>> ', completer=CommandCompleter(completer))
         command, *args = parse_input(user_input)
         
         if not command:
@@ -113,49 +102,47 @@ def main():
                 confirm = input("You have unsaved changes. Are you sure you want to exit? (yes/no) ")
                 if confirm.lower() != "yes":
                     continue
-            print("[red]Good bye![/red]")
+            console.print("[red]Good bye![/red]")
             break
 
         # commands - contact viewing and editing
         elif command == "add":
             result = add_contact(args, book)
-            console.print(f"{result}\n")
+            console.print(result)
             changes_made = True
         elif command == "change":
-            change_contact(args, book)
-            console.print("Contact changed.\n")
+            result = change_contact(args, book)
+            console.print(result)
             changes_made = True
         elif command == "delete":
-            delete_contact(args, book)
-            console.print("Contact deleted.\n")
+            result = delete_contact(args, book)
+            console.print(result)
             changes_made = True
         elif command == "show_phone":
-            result = show_phone(book, *args)
-            console.print(f"{result}\n")
+            result = show_phone(args, book)
+            console.print(result)
         elif command == "all":
             result = show_all(book)
-            if result:
-                console.print(f"{result}\n")
-            else:
-                console.print("No contacts found.\n")
-
+            console.print(result)
+        
         # commands - contact birthdays
         elif command == "add_birthday":
             add_birthday(args, book)
+            result = add_birthday(args, book)
+            console.print(result)
             changes_made = True
-            # console.print("Birthday added.\n")
         elif command == "change_birthday":
             change_birthday(args, book)
             changes_made = True
-            # console.print("Birthday changed.\n")
         elif command == "show_birthday":
             result = show_birthday(args, book)
-            console.print(f"Birthday: {result}\n")
+            console.print(result)
         elif command == "birthdays":
-            result = birthdays(book)
-            console.print(f"Upcoming birthdays: {result}\n")
+            upcoming_birthdays = get_upcoming_birthdays(book)
+            result = print_upcoming_birthdays(upcoming_birthdays)
+            console.print(result)
 
-        # commands - notes viewing and editing
+        # commands - note
         elif command == "add_note":
             add_note(args, notebook)
             changes_made = True
@@ -171,25 +158,24 @@ def main():
             changes_made = True
         elif command == "find_note":
             find_note(args, notebook)
-            changes_made = True
+            # changes_made = True
 
         # commands - email and address
         elif command == "add_email":
-            add_email(args, book)
+            result = add_email(args, book)
+            console.print(result)
             changes_made = True
-            # console.print("Email added.\n")
         elif command == "change_email":
-            change_email(args, book)
+            result = change_email(args, book)
+            console.print(result)
             changes_made = True
-            # console.print("Email changed.\n")
         elif command == "add_address":
-            add_address(args, book)
+            result = add_address(args, book)
+            console.print(result)
             changes_made = True
-            # console.print("Address added.\n")
         elif command == "change_address":
             change_address(args, book)
             changes_made = True
-            # console.print("Address changed.\n")
         elif command == "help":
             print_help()
         else:
