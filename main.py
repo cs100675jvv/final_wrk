@@ -74,7 +74,7 @@ def main():
     changes_made = False
 
     # greeting
-    print("Hello. How can I help you today?\n")
+    console.print("Hello. How can I help you today?\n")
     
     # user interaction loop
     while True:
@@ -102,7 +102,7 @@ def main():
                 confirm = input("You have unsaved changes. Are you sure you want to exit? (yes/no) ")
                 if confirm.lower() != "yes":
                     continue
-            print("[red]Good bye![/red]")
+            console.print("[red]Good bye![/red]")
             break
 
         # commands - contact viewing and editing
