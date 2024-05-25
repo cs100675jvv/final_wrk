@@ -1,14 +1,11 @@
 import re
 from datetime import datetime
 
-
 class PhoneValidationError(ValueError):
     pass
 
-
 class NameValidationError(ValueError):
     pass
-
 
 class EmailValidationError(ValueError):
     pass
@@ -49,8 +46,8 @@ def input_error_phones(func):
         try:
             name, phone, new_phone, *_ = args[0]
 
-            if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
-                raise NameValidationError
+            # if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
+            #     raise NameValidationError
 
             if not re.match(r'^\d{10,}$', phone):
                 raise PhoneValidationError
@@ -62,8 +59,8 @@ def input_error_phones(func):
 
         except PhoneValidationError:
             message = "Invalid phone number. Phone number should contain only digits and be at least 10 digits long."
-        except NameValidationError:
-            message = "Invalid name. Name should contain only letters with capital first."
+        # except NameValidationError:
+        #     message = "Invalid name. Name should contain only letters with capital first."
         except KeyError:
             message = "Enter user name."
         except ValueError:
@@ -77,31 +74,31 @@ def input_error_phones(func):
     return inner
 
 
-def input_error_name(func):
-    def inner(*args, **kwargs):
-        try:
-            name, = args[0]
+# def input_error_name(func):
+#     def inner(*args, **kwargs):
+#         try:
+#             name, = args[0]
 
-            if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
-                raise NameValidationError
+#             if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
+#                 raise NameValidationError
 
-            return func(*args, **kwargs)
+#             return func(*args, **kwargs)
 
-        except PhoneValidationError:
-            message = "Invalid phone number. Phone number should contain only digits and be at least 10 digits long."
-        except NameValidationError:
-            message = "Invalid name. Name should contain only letters with capital first."
-        except KeyError:
-            message = "Enter user name."
-        except ValueError:
-            message = "Give me name please."
-        except IndexError:
-            message = "Missing arguments."
-        except Exception as e:
-            message = f"Error in {func.__name__}: {e}"
-        return message
+#         except PhoneValidationError:
+#             message = "Invalid phone number. Phone number should contain only digits and be at least 10 digits long."
+#         except NameValidationError:
+#             message = "Invalid name. Name should contain only letters with capital first."
+#         except KeyError:
+#             message = "Enter user name."
+#         except ValueError:
+#             message = "Give me name please."
+#         except IndexError:
+#             message = "Missing arguments."
+#         except Exception as e:
+#             message = f"Error in {func.__name__}: {e}"
+#         return message
 
-    return inner
+#     return inner
 
 
 def input_error_birthday(func):
@@ -134,8 +131,8 @@ def input_error_email(func):
         try:
             name, email, *_ = args[0]
 
-            if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
-                raise NameValidationError
+            # if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
+            #     raise NameValidationError
 
             email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
             if not re.match(email_regex, email):
@@ -145,8 +142,8 @@ def input_error_email(func):
 
         except EmailValidationError:
             print("Invalid email. Please, enter a real email.")
-        except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital first.")
+        # except NameValidationError:
+        #     print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
             print("Enter user name.")
         except ValueError:
@@ -164,8 +161,8 @@ def input_error_emailes(func):
         try:
             name, email, new_email, *_ = args[0]
 
-            if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
-                raise NameValidationError
+            # if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
+            #     raise NameValidationError
 
             email_regex = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
             if not re.match(email_regex, email):
@@ -178,8 +175,8 @@ def input_error_emailes(func):
 
         except EmailValidationError:
             print("Invalid email. Please, enter a real email.")
-        except NameValidationError:
-            print("Invalid name. Name should contain only letters with capital first.")
+        # except NameValidationError:
+        #     print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
             print("Enter user name.")
         except ValueError:

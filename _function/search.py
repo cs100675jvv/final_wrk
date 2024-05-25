@@ -1,5 +1,3 @@
-from _decorator.decorator import input_error, input_error_birthday, input_error_email
-from _decorator.decorator import input_error_name
 from _classes.adress_book import AddressBook
 
 
