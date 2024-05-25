@@ -11,12 +11,18 @@ class Field:
 
 class Name(Field):
     def __init__(self, value):
+        value = self.correct_name(value)
         super().__init__(value)
 
     def validate(self):
         if not self.value.strip():
             raise ValueError("Name cannot be empty.")
+    
 
+    
+    @staticmethod
+    def correct_name(name):
+        return name.capitalize()
 
 class Phone(Field):
     def __init__(self, value):

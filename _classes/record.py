@@ -45,16 +45,16 @@ class Record:
         self.email = Email(email)
         return
 
-    def edit_mail(self, new_email):
-        self.email = new_email
+    def edit_mail(self, email):
+        self.email = Email(email)
         return
     
     def add_addr(self, address):
         self.address = Address(address)
         return 
 
-    def edit_addr(self, new_address):
-        self.address = new_address
+    def edit_addr(self, address):
+        self.address = Address(address)
         return
 
     def __str__(self):
