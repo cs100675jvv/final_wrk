@@ -52,7 +52,9 @@ def show_birthday(args, book: 'AddressBook'):
     name, *_ = args
     record = book.find(name)
     if record:
-        date_obj = datetime.strptime(str(record.birthday), "%Y-%m-%d %H:%M:%S")
-        return f"Contact {name} has birthday: {date_obj.strftime('%d-%m-%Y')}"
-    else:
-        return f"Contact {name} not found in our dictionary."
+        if record.birthday:
+            date_obj = datetime.strptime(str(record.birthday), "%Y-%m-%d %H:%M:%S")
+            return f"Contact {name} has birthday: {date_obj.strftime('%d-%m-%Y')}"
+        
+        return f"Contact {name} has no added birthday."
+    return f"Contact {name} not found in our dictionary."

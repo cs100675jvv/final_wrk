@@ -153,12 +153,14 @@ def main():
         elif command == "list_notes":
             list_notes(notebook)
         elif command == "show_note":
-            show_note(args, notebook)
+            result = show_note(args, notebook)
+            console.print(result)
         elif command == "edit_note":
             edit_note(args, notebook)
             changes_made = True
         elif command == "find_note":
-            find_note(args, notebook)
+            result = find_note(args, notebook)
+            console.print(result)
             # changes_made = True
 
         # commands - email and address
