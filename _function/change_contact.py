@@ -18,10 +18,10 @@ def change_contact(args, book: 'AddressBook'):
 
 @input_error_birthday
 def change_birthday(args, book: 'AddressBook'):
-    name, birthday, new_birthday, *_ = args
+    name, birthday, *_ = args
     record = book.find(name)
     if record:
-        record.edit_birth(birthday, new_birthday)
+        record.edit_birth(birthday)
         return print(f"Contact {name} now has birthday: {datetime.strptime(birthday, '%d.%m.%Y')}")
     else:
         return print(f"Contact {name} not found in our dictionary.")
@@ -29,11 +29,11 @@ def change_birthday(args, book: 'AddressBook'):
 
 @input_error_emailes
 def change_email(args, book: 'AddressBook'):
-    name, email, new_email, *_ = args
+    name, email, *_ = args
     record = book.find(name)
     if record:
-        record.edit_mail(email, new_email)
-        return f"Contact {name} now has email: {new_email}"
+        record.edit_mail(email)
+        return f"Contact {name} now has email: {email}"
     else:
         return f"Contact {name} not found in our dictionary."
 

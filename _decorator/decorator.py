@@ -141,17 +141,18 @@ def input_error_email(func):
             return func(*args, **kwargs)
 
         except EmailValidationError:
-            print("Invalid email. Please, enter a real email.")
+            message = "Invalid email. Please, enter a real email."
         # except NameValidationError:
         #     print("Invalid name. Name should contain only letters with capital first.")
         except KeyError:
-            print("Enter user name.")
+            message = "Enter user name."
         except ValueError:
-            print("Give me name and email please.")
+            message = "Give me name and email please."
         except IndexError:
-            print("Missing arguments.")
+            message = "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            message = f"Error in {func.__name__}: {e}"
+        return message
 
     return inner
 
@@ -159,7 +160,7 @@ def input_error_email(func):
 def input_error_emailes(func):
     def inner(*args, **kwargs):
         try:
-            name, email, new_email, *_ = args[0]
+            name, email, *_ = args[0]
 
             # if not re.match(r'^[A-ZА-ЯЁ][a-zа-яё]*$', name):
             #     raise NameValidationError
@@ -168,23 +169,24 @@ def input_error_emailes(func):
             if not re.match(email_regex, email):
                 raise EmailValidationError
 
-            if not re.match(email_regex, new_email):
-                raise EmailValidationError
+            # if not re.match(email_regex, new_email):
+            #     raise EmailValidationError
 
             return func(*args, **kwargs)
 
         except EmailValidationError:
-            print("Invalid email. Please, enter a real email.")
+            message = "Invalid email. Please, enter a real email."
         # except NameValidationError:
         #     print("Invalid name. Name should contain only letters with capital first.")
-        except KeyError:
-            print("Enter user name.")
-        except ValueError:
-            print("Give me name and emailes please.")
-        except IndexError:
-            print("Missing arguments.")
+        # except KeyError:
+        #     message = "Enter user name."
+        # except ValueError:
+        #     message = "Give me name and email please."
+        # except IndexError:
+        #     message = "Missing arguments."
         except Exception as e:
-            print(f"Error in {func.__name__}: {e}")
+            message = f"Error in {func.__name__}: {e}"
+        return message
 
     return inner
 
