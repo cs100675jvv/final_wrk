@@ -1,11 +1,9 @@
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from rich.console import Console
-# import tkinter as tk
-# from tkinter import font as tkfont
+import getpass
 
 from _classes.command_completer import CommandCompleter
-import getpass
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
 from _function.add_note import add_note
 from _function.list_notes import list_notes
@@ -20,7 +18,6 @@ from _function.parse import parse_input
 from _function.save_load_data import DataManager
 from _function.show import show_phone, show_all, show_birthday
 from _function.upcoming_birthdays import get_upcoming_birthdays, print_upcoming_birthdays
-from _function.search import search_all
 
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter, Completer
@@ -62,8 +59,8 @@ commands = [
 ]
 
 completer = WordCompleter(commands, ignore_case=True)
-
 console = Console()
+data_manager = DataManager(data_path)
 
 def main():
     # loading data plain by default
@@ -131,13 +128,12 @@ def main():
         # commands - contact birthdays
         elif command == "add_birthday":
             add_birthday(args, book)
-            changes_made = True
             result = add_birthday(args, book)
             console.print(result)
+            changes_made = True
         elif command == "change_birthday":
             change_birthday(args, book)
             changes_made = True
-            # console.print("Birthday changed.\n")
         elif command == "show_birthday":
             result = show_birthday(args, book)
             console.print(result)
@@ -145,7 +141,8 @@ def main():
             upcoming_birthdays = get_upcoming_birthdays(book)
             result = print_upcoming_birthdays(upcoming_birthdays)
             console.print(result)
-        
+
+        # commands - note
         elif command == "add_note":
             add_note(args, notebook)
             changes_made = True
@@ -161,25 +158,24 @@ def main():
             changes_made = True
         elif command == "find_note":
             find_note(args, notebook)
-            changes_made = True
+            # changes_made = True
 
         # commands - email and address
         elif command == "add_email":
             result = add_email(args, book)
             console.print(result)
-            changes_made  = True
+            changes_made = True
         elif command == "change_email":
             result = change_email(args, book)
-            changes_made = True
             console.print(result)
+            changes_made = True
         elif command == "add_address":
             result = add_address(args, book)
-            changes_made = True
             console.print(result)
+            changes_made = True
         elif command == "change_address":
             change_address(args, book)
             changes_made = True
-            # console.print("Address changed.\n")
         elif command == "help":
             print_help()
         else:
