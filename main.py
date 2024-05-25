@@ -93,10 +93,16 @@ def main():
             data_manager.save_data_encrypted(data_bundle, data_file_name)
             changes_made = False
         elif command == "load":
-            data_manager.load_data_plain(data_file_name)
+            data_bundle = data_manager.load_data_plain(data_file_name)
+            # loading refs to address_book and note_book
+            book = data_bundle.address_book
+            notebook = data_bundle.note_book
             changes_made = False
         elif command == "load_secure":
-            data_manager.load_data_encrypted(data_file_name)
+            data_bundle = data_manager.load_data_encrypted(data_file_name)
+            # loading refs to address_book and note_book
+            book = data_bundle.address_book
+            notebook = data_bundle.note_book
             changes_made = False
         elif command in ["close", "exit"]:
             if changes_made:
