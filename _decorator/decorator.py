@@ -19,7 +19,7 @@ def input_error(func):
             if not re.match(r'^[a-zA-Zа-яА-ЯїЇєЄіІёЁ]+$', name):
                 raise NameValidationError
 
-            if not re.match(r'^\d{10,}$', phone):
+            if not re.match(r'^\d{10}$', phone):
                 raise PhoneValidationError
 
             return func(*args, **kwargs)
@@ -49,7 +49,7 @@ def input_error_phones(func):
             if not re.match(r'^\d{10,}$', phone):
                 raise PhoneValidationError
 
-            if not re.match(r'^\d{10,}$', new_phone):
+            if not re.match(r'^\d{10}$', new_phone):
                 raise PhoneValidationError
 
             return func(*args, **kwargs)
