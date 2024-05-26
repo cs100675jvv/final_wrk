@@ -30,7 +30,6 @@ data_file_name = "DataBundle"
 commands = [
     'close',
     'exit',
-    'hello',
     'help',
     'add',
     'change',
@@ -56,7 +55,6 @@ commands = [
     'save_secure',
     'load',
     'load_secure',
-    'yes'
 ]
 
 completer = WordCompleter(commands, ignore_case=True)
