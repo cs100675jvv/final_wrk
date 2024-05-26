@@ -5,3 +5,4 @@ cd project-f16df35s/
 python -m venv ./.venv
 source ./.venv/bin/activate
 pip install -e .
+exec "$SHELL"
