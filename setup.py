@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name='assistantbot',
+    name='catdog-bot',
     version='0.0.1',
     include_package_data=True,
     install_requires=[
@@ -19,7 +19,7 @@ setup(
     py_modules=['main'],
     entry_points='''
         [console_scripts]
-        assistantbot=main:main
+        catdog-bot=main:main
     ''',
     python_requires='>=3.0',
 )

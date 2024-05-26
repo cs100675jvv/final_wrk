@@ -1,12 +1,17 @@
-# final_wrk
+# Catdog-bot
 
 ## Description
 
 Console bot for saving contacts, birthdays and notes
 
-## Usage
+## Installation
 
-To run the bot use `main.py`
+To download and install the bot use
+`install.sh`
+
+To run the bot use `catdog-bot` command
+
+## Usage
 
 The bot support the following commands:
 
@@ -40,6 +45,4 @@ The bot support the following commands:
 ## Installation as package
 Use the command `pip install -e .` from the root directory to install this app a package.
 
-Then use `assistantbot` command to run the bot.
-
-## Example Usage
+Then use `catdog-bot` command to run the bot.
