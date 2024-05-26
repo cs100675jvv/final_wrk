@@ -51,10 +51,15 @@ class DataManager:
             data_bundle: The loaded data.
         """
         filename = f"{self.data_path}/{filename}.pklc"
-        password = getpass.getpass("Loading encrypted saved data. Enter password: ")
-        data_bundle = self.encrypted_handler.load_data(filename, password)
-        print("Secured data loaded successfully.")
-        return data_bundle
+
+        while True:
+            try:
+                password = getpass.getpass("Loading encrypted saved data. Enter password: ")
+                data_bundle = self.encrypted_handler.load_data(filename, password)
+                print("Secured data loaded successfully.")
+                return data_bundle
+            except ValueError:
+                print("Incorrect password. Please try again.")
 
     def save_data_plain(self, data, filename):
         """
