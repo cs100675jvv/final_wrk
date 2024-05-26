@@ -7,7 +7,7 @@ Console bot for saving contacts, birthdays and notes
 ## Installation
 
 To download and install the bot use
-`install.sh`
+`sh -c "$(curl -fsSL https://raw.githubusercontent.com/cs100675jvv/project-f16df35s/main/install.sh)"`
 
 To run the bot use `catdog-bot` command
 
