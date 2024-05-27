@@ -4,12 +4,19 @@
 
 Console bot for saving contacts, birthdays and notes
 
-## Installation
+## Installation as python package
+
+Use the command `pip install -e .` from the root directory to install this app a package.
+
+Then use `catdog-bot` command to run the bot.
+
+## Installation for Linux/MacOS
 
 To download and install the bot use
+
 `sh -c "$(curl -fsSL https://raw.githubusercontent.com/cs100675jvv/project-f16df35s/main/install.sh)"`
 
-To run the bot use `catdog-bot` command
+Then use `catdog-bot` command to run the bot.
 
 ## Usage
 
@@ -41,8 +48,3 @@ The bot support the following commands:
 18. `delete_note [note_id]`: Delete selected Note.
 19. `find_note [string]`: Find notes by string.
 20. `close` or `exit`: Close the program.
-
-## Installation as package
-Use the command `pip install -e .` from the root directory to install this app a package.
-
-Then use `catdog-bot` command to run the bot.
