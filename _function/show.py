@@ -1,5 +1,5 @@
 from datetime import datetime
-
+from _decorator.decorator import input_error_note
 from _classes.adress_book import AddressBook
 # from _function.upcoming_birthdays import get_upcoming_birthdays
 
@@ -47,7 +47,7 @@ def show_all(book: 'AddressBook'):
 
     return '\n'.join(rows)
 
-
+@input_error_note
 def show_birthday(args, book: 'AddressBook'):
     name, *_ = args
     record = book.find(name)

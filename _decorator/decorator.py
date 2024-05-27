@@ -153,7 +153,7 @@ def input_error_note(func):
         except KeyError:
             message = "KeyError"
         except ValueError:
-            message = "Please specify note_id"
+            message = "Please specify at least one argument"
         except IndexError:
             message = "Missing arguments"
         except Exception as e:
