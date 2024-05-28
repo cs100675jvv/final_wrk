@@ -1,7 +1,18 @@
 from datetime import datetime, timedelta
 
 
+from datetime import datetime, timedelta
+
 def get_upcoming_birthdays(book):
+    """
+    Get a list of upcoming birthdays within the next 7 days.
+
+    Args:
+        book (Book): The book object containing user records.
+
+    Returns:
+        list: A list of dictionaries, each containing the name of the person and the date of their upcoming birthday.
+    """
     today = datetime.today().date()
     upcoming_birthdays = []
 
@@ -26,6 +37,16 @@ def get_upcoming_birthdays(book):
     return upcoming_birthdays
 
 def print_upcoming_birthdays(upcoming_birthdays):
+    """
+    Prints the upcoming birthdays.
+
+    Args:
+        upcoming_birthdays (list): A list of dictionaries containing information about upcoming birthdays.
+            Each dictionary should have 'name' and 'congratulation_date' keys.
+
+    Returns:
+        str: A formatted message displaying the upcoming birthdays.
+    """
     if not upcoming_birthdays:
         message = "No upcoming birthdays."
         return message

@@ -5,6 +5,16 @@ from _classes.adress_book import AddressBook
 
 
 def show_phone(args, book: 'AddressBook'):
+    """
+    Display the phone numbers of a contact in the address book.
+
+    Args:
+        args (list): A list of arguments. The first argument is the name of the contact.
+        book (AddressBook): An instance of the AddressBook class.
+
+    Returns:
+        str: A string containing the contact's name and their phone numbers, if found.
+    """
     name, *_ = args
     record = book.find(name)
     if record:
@@ -14,7 +24,16 @@ def show_phone(args, book: 'AddressBook'):
 
 
 def show_all(book: 'AddressBook'):
+    """
+    Display all records in the address book.
 
+    Args:
+        book (AddressBook): The address book containing the records.
+
+    Returns:
+        str: A formatted string representing all the records in the address book.
+             If no records are available, it returns "No records available."
+    """
     if not book.data:
         return "No records available."
 
@@ -49,6 +68,16 @@ def show_all(book: 'AddressBook'):
 
 @input_error_note
 def show_birthday(args, book: 'AddressBook'):
+    """
+    Show the birthday of a contact.
+
+    Args:
+        args (list): List of arguments passed to the function.
+        book (AddressBook): The address book containing the contact records.
+
+    Returns:
+        str: A string indicating the birthday of the contact, or a message indicating that the contact has no added birthday
+    """
     name, *_ = args
     record = book.find(name)
     if record:

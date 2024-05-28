@@ -2,6 +2,17 @@ from _classes.notes import NoteBook, Note
 from _function.format_table import format_table
 
 def find_note(args, notebook: NoteBook) -> Note:
+    """
+    Find a note in the given notebook that contains the given substring.
+
+    Args:
+        args (list): List of strings representing the substring to search for.
+        notebook (NoteBook): The notebook object to search in.
+
+    Returns:
+        Note or str: If a note is found, returns the formatted table of matching notes.
+                    If no notes are found, returns a string indicating no notes were found.
+    """
     substring = ' '.join(args)
     headers = ["ID", "Header", "Body", "Creation Date"]
     rows = []

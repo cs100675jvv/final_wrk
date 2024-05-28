@@ -60,6 +60,13 @@ class DataManager:
                 return data_bundle
             except ValueError:
                 print("Incorrect password. Please try again.")
+            except FileNotFoundError:
+                print(f"No file found at {filename}. Creating new data bundle.")
+                address_book = AddressBook()
+                note_book = NoteBook()
+                data_bundle = DataBundle(address_book, note_book)
+                self.encrypted_handler.save_data(data_bundle, filename, password)
+                return data_bundle
 
     def save_data_plain(self, data, filename):
         """

@@ -1,4 +1,13 @@
 def parse_input(user_input):
+    """
+    Parses the user input and returns the command and arguments.
+
+    Args:
+        user_input (str): The user input to be parsed.
+
+    Returns:
+        tuple: A tuple containing the command and arguments
+    """
     if not user_input.strip():
         print("Please, give me a command.")
         return None, []

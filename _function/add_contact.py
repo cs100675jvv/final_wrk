@@ -5,6 +5,16 @@ from _decorator.decorator import input_error, input_error_birthday, input_error_
 
 @input_error
 def add_contact(args, book: AddressBook):
+    """
+    Adds or updates a contact in the address book.
+
+    Args:
+        args (list): A list containing the contact details (name, phone).
+        book (AddressBook): The address book object.
+
+    Returns:
+        str: A message indicating whether the contact was added or updated.
+    """
     name, phone, *_ = args
     record = book.find(name)
     message = "Contact updated."
@@ -19,6 +29,16 @@ def add_contact(args, book: AddressBook):
 
 @input_error_birthday
 def add_birthday(args, book: AddressBook):
+    """
+    Adds a birthday to a contact in the address book.
+
+    Args:
+        args (list): A list containing the name and birthday of the contact.
+        book (AddressBook): The address book object.
+
+    Returns:
+        str: A message indicating the success or failure of the operation.
+    """
     name, birthday, *_ = args
     record = book.find(name)
     if record:
@@ -31,6 +51,16 @@ def add_birthday(args, book: AddressBook):
 
 @input_error_email
 def add_email(args, book: AddressBook):
+    """
+    Adds or updates an email for a contact in the address book.
+
+    Args:
+        args (list): A list containing the name and email of the contact.
+        book (AddressBook): The address book object.
+
+    Returns:
+        str: A message indicating the result of the operation.
+    """
     name, email, *_ = args
     record = book.find(name)
     message = f"Contact {name} updated with email {email}."
@@ -44,6 +74,16 @@ def add_email(args, book: AddressBook):
 
 
 def add_address(args, book: AddressBook):
+    """
+    Adds an address to a contact in the address book.
+
+    Args:
+        args (list): A list containing the name and address.
+        book (AddressBook): The address book object.
+
+    Returns:
+        str: A message indicating the result of the operation.
+    """
     if len(args) < 2:
         message = "Please provide both name and address."
         return message

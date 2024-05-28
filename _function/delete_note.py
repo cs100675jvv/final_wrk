@@ -3,6 +3,13 @@ from _classes.notes import NoteBook
 
 @input_error_note
 def delete_note(args, notebook: NoteBook):
+    """
+    Deletes a note from the notebook based on the provided note ID.
+
+    Args:
+        args (list): A list containing the note ID.
+        notebook (NoteBook): The notebook object.
+    """
     note_id, *_ = args
     if note_id in notebook:
         notebook.remove_note_by_id(note_id)

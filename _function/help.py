@@ -1,6 +1,9 @@
 from _function.format_table import format_table
 
 def print_help():
+    """
+    Prints the help menu with a list of available commands and their descriptions.
+    """
     headers = ["Command", "Arguments", "Command description"]
 
     commands = [
