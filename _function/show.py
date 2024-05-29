@@ -1,7 +1,6 @@
 from datetime import datetime
 from _decorator.decorator import input_error_note
 from _classes.adress_book import AddressBook
-# from _function.upcoming_birthdays import get_upcoming_birthdays
 
 
 def show_phone(args, book: 'AddressBook'):

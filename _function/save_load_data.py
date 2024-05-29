@@ -132,11 +132,6 @@ class PlainDataHandler:
             self.save_data(data_bundle, filename)
             return data_bundle
 
-import os
-import pickle
-from Crypto.Cipher import AES
-from Crypto.Util.Padding import pad, unpad
-from Crypto.Hash import SHA256
 
 class EncryptedDataHandler:
     """

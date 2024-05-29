@@ -1,7 +1,6 @@
 from prompt_toolkit import prompt
 from prompt_toolkit.completion import WordCompleter
 from rich.console import Console
-import getpass
 
 from _classes.command_completer import CommandCompleter
 from _function.add_contact import add_contact, add_birthday, add_email, add_address
@@ -21,7 +20,7 @@ from _function.upcoming_birthdays import get_upcoming_birthdays, print_upcoming_
 from _function.search import search_all
 
 from prompt_toolkit import prompt
-from prompt_toolkit.completion import WordCompleter, Completer
+from prompt_toolkit.completion import WordCompleter
 from rich.console import Console
 
 data_path = "./_files"

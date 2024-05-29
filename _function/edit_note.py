@@ -12,16 +12,6 @@ def edit_note(args, notebook="notebook"):
     print(f"Editing note with header '{note.header}'. Current text:\n{note.body}\n")
     print("Enter the new Note text (Type ':end' to finish text editing):")
     
-    # body_lines = []
-    # while True:
-    #     line = input()
-    #     if line.strip() == ":end":
-    #         break
-    #     body_lines.append(line)
-    
-    # note.body = "\n".join(body_lines)
-    # note.size = len(note.body)
-    # print(f"Note '{note.header}' updated.")
     new_body_lines = note.body.split("\n")
 
     def input_with_prefill(prompt, prefill):

@@ -1,8 +1,6 @@
 from datetime import datetime, timedelta
 
 
-from datetime import datetime, timedelta
-
 def get_upcoming_birthdays(book):
     """
     Get a list of upcoming birthdays within the next 7 days.
